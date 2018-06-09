@@ -1,0 +1,12 @@
+#!/usr/bin/env ansible-playbook
+
+# Override `greeting` by command line parameter as below
+# ./greet.yml -e "greeting='Hello world'"
+
+- name: pass a message on the command line
+  hosts: server1
+  vars:
+    greeting: 'Hello ansible'
+  tasks:
+    - name: output message
+      debug: "msg={{ greeting }}"
