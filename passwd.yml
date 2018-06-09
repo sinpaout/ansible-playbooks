@@ -1,0 +1,11 @@
+#!/usr/bin/env ansible-playbook
+
+- hosts: server1
+  vars:
+    new_pass: 'vagrant'
+  tasks:
+    - name: changing password of vagrant
+      become: True
+      user:
+        name: "vagrant"
+        password: "{{ new_pass | password_hash('sha512') }}"
